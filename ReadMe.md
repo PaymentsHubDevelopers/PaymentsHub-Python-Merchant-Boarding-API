@@ -9,4 +9,4 @@ Your completed app will look similar to the following:
 
 ![merchant-boarding-api-sample-app](https://github.com/PaymentsHubDevelopers/PaymentsHub-Python-Merchant-Boarding-API/assets/136620102/c6a19a68-6c33-40e3-a1db-8abf305b6d0a)
 
-
+![merchant-boarding-api-sample-app3](https://github.com/PaymentsHubDevelopers/PaymentsHub-Python-Merchant-Boarding-API/assets/136620102/5cf14d61-86e6-4243-99ec-d8607bbde968)
