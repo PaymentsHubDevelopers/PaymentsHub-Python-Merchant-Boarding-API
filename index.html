@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Merchant Boarding API</title>
+    </head>
+    <body>
+        <div class="mt-4 mb-4 flex flex-row justify-around">
+        <div class="w-full max-w-md">
+                <h2 class="text-center" style='font-weight: bold; font-size: 24px'>Merchant Boarding API</h2>
+                <form id="apiDataForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST">
+                <!-- agent -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="agent">Agent (required):</label>
+                <input required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" id="agent" name="agent" value="12345"><br><br>
+        
+                <!-- externalKey -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="externalKey">External Key (required):</label>
+                <button id="generateExternalKey" class="shadow bg-gray-200 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">Generate External Key</button><br/><br/>
+                <input required id="externalKeyFeild" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="externalKey" name="externalKey" value=""><br><br>
+        
+                <!-- plan -->
+                <!-- Placeholder for nested object plan -->
+                <!-- planId -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="planId">Plan ID (required):</label>
+                <input required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" id="planId" name="plan[planId]" value="123"><br><br>
+        
+                <!-- applicationName -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="applicationName">Application Name:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="applicationName" name="applicationName" value="Test Application 1"><br><br>
+
+                <!-- principals -->
+                <!-- Placeholder for array of principals -->
+                <!-- firstName -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="firstName">First Name:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="firstName" name="principals[0][firstName]" value="Jane"><br><br>
+                <!-- lastName -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="lastName">Last Name:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="lastName" name="principals[0][lastName]" value="Smith"><br><br>
+                <!-- socialSecurityNumber -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="ssn">Social Security Number:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="ssn" name="principals[0][socialSecurityNumber]" value=""><br><br>
+                <!-- dateOfBirth -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="dob">Date of Birth:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="dob" name="principals[0][dateOfBirth]" value="1900-01-01"><br><br>
+                <!-- phoneNumber -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">Phone Number:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="phone" name="principals[0][phoneNumber]" value="1234567890"><br><br>
+                <!-- email -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="email" name="principals[0][email]" value="user@example.com"><br><br>
+                <!-- street -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="street">Street:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="street" name="principals[0][street]" value="1234 Test Street"><br><br>
+                <!-- zipCode -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="zip">Zip Code:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="zip" name="principals[0][zipCode]" value="12345"><br><br>
+                <!-- city -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="city">City:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="city" name="principals[0][city]" value=""><br><br>
+                <!-- state -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="state">State:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="state" name="principals[0][state]" value="NJ"><br><br>
+                <!-- equityOwnershipPercentage -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="equity">Equity Ownership Percentage:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" id="equity" name="principals[0][equityOwnershipPercentage]" value="90"><br><br>
+                <!-- title -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="title">Title:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="title" name="principals[0][title]" value="manager"><br><br>
+                <!-- isPersonalGuarantor -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="personalGuarantor">Is Personal Guarantor:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="personalGuarantor" name="principals[0][isPersonalGuarantor]" value="False"><br><br>
+                <!-- driverLicenseNumber -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="dlNumber">Driver License Number:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="dlNumber" name="principals[0][driverLicenseNumber]" value="ABC1234567890"><br><br>
+                <!-- driverLicenseIssuedState -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="dlState">Driver License Issued State:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="dlState" name="principals[0][driverLicenseIssuedState]" value="MI"><br><br>
+        
+                <!-- business -->
+                <!-- Placeholder for nested object business -->
+                <!-- corporateName -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="corporateName">Corporate Name:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="corporateName" name="business[corporateName]" value=""><br><br>
+                <!-- dbaName -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="dbaName">DBA Name:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="dbaName" name="business[dbaName]" value=""><br><br>
+                <!-- businessType -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="businessType">Business Type:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="businessType" name="business[businessType]" value="C"><br><br>
+                <!-- federalTaxIdNumber -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="taxId">Federal Tax ID Number:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="taxId" name="business[federalTaxIdNumber]" value="123567890"><br><br>
+                <!-- federalTaxIdType -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="taxIdType">Federal Tax ID Type:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="taxIdType" name="business[federalTaxIdType]" value="EIN"><br><br>
+                <!-- mcc -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="mcc">MCC:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="mcc" name="business[mcc]" value="1234"><br><br>
+                <!-- phone -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="businessPhone">Business Phone:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="businessPhone" name="business[phone]" value="1234567890"><br><br>
+                <!-- email -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="businessEmail">Business Email:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="businessEmail" name="business[email]" value="user@example.com"><br><br>
+        
+                <!-- More nested objects and arrays... -->
+        
+                <!-- bankAccount -->
+                <!-- Placeholder for nested object bankAccount -->
+                <!-- abaRouting -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="abaRouting">ABA Routing:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="abaRouting" name="bankAccount[abaRouting]" value=""><br><br>
+                <!-- accountType -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="accountType">Account Type:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="accountType" name="bankAccount[accountType]" value="checking"><br><br>
+                <!-- demandDepositAccount -->
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="demandDepositAccount">Demand Deposit Account:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="demandDepositAccount" name="bankAccount[demandDepositAccount]" value=""><br><br>
+        
+                <button id="generateTokenButton" class="bg-gray-200 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">Generate Token</button> <br/><br/>
+                <!-- Submit Button -->
+                <button id="submitBUtton" class="bg-gray-200 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="submit">Submit
+                </button>
+            </form>
+            </div>
+            </div>
+</html>
+
+<script>
+let token = '';
+
+var generateTokenButton = document.getElementById('generateTokenButton');
+generateTokenButton.addEventListener('click', function() {
+    authRequest();
+});
+
+var generateExternalKey = document.getElementById('generateExternalKey');
+generateExternalKey.addEventListener('click',function(){
+    let randomNumbers = Math.round(Math.random() * 9999)
+    let randomChars = (Math.random() + 1).toString(36).substring(7).toUpperCase();
+    var externalKeyFeild =document.getElementById('externalKeyFeild');
+    externalKeyFeild.value = randomNumbers+"-"+randomChars;
+});
+var formSubmitButton = document.getElementById('submitBUtton');
+formSubmitButton.addEventListener('click',function(){
+    var form = document.getElementById('apiDataForm');
+
+    if(!form['agent']){
+        alert('Agent is required')
+        return false;
+    }
+    if(!form['plan[planId]']){
+        alert('Plan ID is required')
+        return false;
+    }
+
+    // Initialize an empty object to hold the form data
+    var formData = {};
+
+    // Iterate over form elements and add them to the formData object
+    for (var i = 0; i < form.elements.length; i++) {
+        var element = form.elements[i];
+        if (element.type !== 'submit') {
+            formData[element.name] = element.value;
+        }
+    }
+
+    var principal = {
+        city: formData['principals[0][city]'],
+        dateOfBirth: formData['principals[0][dateOfBirth]'],
+        driverLicenseIssuedState: formData['principals[0][driverLicenseIssuedState]'],
+        driverLicenseNumber: formData['principals[0][driverLicenseNumber]'],
+        email: formData['principals[0][email]'],
+        equityOwnershipPercentage: parseInt(formData['principals[0][equityOwnershipPercentage]']),
+        firstName: formData['principals[0][firstName]'],
+        isPersonalGuarantor: true,
+        lastName: formData['principals[0][lastName]'],
+        phoneNumber: formData['principals[0][phoneNumber]'],
+        socialSecurityNumber: formData['principals[0][socialSecurityNumber]'],
+        state: formData['principals[0][state]'],
+        street: formData['principals[0][street]'],
+        title: formData['principals[0][title]'],
+        zipCode: formData['principals[0][zipCode]'],
+    };
+
+    var business = {
+        businessType: formData['business[businessType]'],
+        corporateName: formData['business[corporateName]'],
+        dbaName: formData['business[dbaName]'],
+        email: formData['business[email]'],
+        federalTaxIdNumber: formData['business[federalTaxIdNumber]'],
+        federalTaxIdType: formData['business[federalTaxIdType]'],
+        mcc: formData['business[mcc]'],
+    };
+
+    var bankAccount = {
+        abaRouting: formData['bankAccount[abaRouting]'],
+        accountType: formData['bankAccount[accountType]'],
+        demandDepositAccount: formData['bankAccount[demandDepositAccount]'],
+    };
+
+    var plan = {
+        planId : parseInt(formData['plan[planId]'])
+    }
+    console.log(plan);
+    console.log(bankAccount);
+    console.log(business);
+    console.log(principal);
+    console.log(formData);
+
+    let randomChars = (Math.random() + 1).toString(36).substring(7).toUpperCase();
+    var payload = {
+        externalKey: formData['externalKey'],
+        agent:parseInt(formData['agent']),
+        applicationName: formData['applicationName'],
+        plan: plan,
+        business: business,
+        principals: [principal],
+        bankAccount: bankAccount
+    }
+
+
+
+    console.log(payload);
+
+    fetch('http://localhost:3001/create_application', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+    'Content-Type': 'application/json'
+    },
+    }).then(response => {
+    if (!response.ok) {
+        throw new Error('Failed to fetch');
+    }
+    return response.json();
+    }).then(data => {
+    console.log('Success:', data);
+    alert('Success. Merchant Application Created!');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+})
+
+document.getElementById('apiDataForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+});
+
+
+const authRequest = () =>{
+fetch('http://localhost:3001/oauth/token', {
+    method: 'GET'
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Failed to fetch');
+    }
+    return response.json();
+})
+.then(data => {
+    console.log('Success:', data);
+    token = data.access_token;
+    console.log(token);
+    alert('You now have an Auth  Token');
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+}
+
+//authRequest();
+
+</script>
