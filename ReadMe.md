@@ -6,6 +6,7 @@ To get started, create a free [Payments Hub Developer Portal account](https://de
 
 ## Completed App
 Your completed app will look similar to the following:
+
 ![merchant-boarding-api-sample-app](https://github.com/PaymentsHubDevelopers/PaymentsHub-Python-Merchant-Boarding-API/assets/136620102/c6a19a68-6c33-40e3-a1db-8abf305b6d0a)
 
 
